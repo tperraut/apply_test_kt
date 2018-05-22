@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/add_item_bt"
+        android:icon="@drawable/ic_action_add_circle_outline"
+        android:title="@string/add_item_bt_name"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/remove_item_bt"
+        android:icon="@drawable/ic_action_remove_circle_outline"
+        android:title="@string/remove_item_bt_name"
+        app:showAsAction="ifRoom"
+        />
+</menu>

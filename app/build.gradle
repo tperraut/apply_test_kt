@@ -1,0 +1,63 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+Properties properties = new Properties()
+properties.load(project.file("keystore/keystore.properties").newDataInputStream())
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
+    defaultConfig {
+        applicationId "com.tperraut.applykt"
+        minSdkVersion 15
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    signingConfigs {
+        release {
+            storeFile file(properties.getProperty("keystore.keystorePath"))
+            storePassword properties.getProperty("keystore.storePassword")
+            keyAlias properties.getProperty("keystore.keyAlias")
+            keyPassword properties.getProperty("keystore.keyPassword")
+        }
+        debug {
+            storeFile file(properties.getProperty("keystore.debugkeystorePath"))
+            storePassword properties.getProperty("keystore.debugstorePassword")
+            keyAlias properties.getProperty("keystore.debugkeyAlias")
+            keyPassword properties.getProperty("keystore.debugkeyPassword")
+        }
+    }
+    buildTypes {
+        release {
+            debuggable false
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+
+        debug {
+            debuggable true
+            minifyEnabled false
+            shrinkResources false
+            versionNameSuffix "-debug"
+            applicationIdSuffix ".debug"
+            signingConfig signingConfigs.debug
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+}

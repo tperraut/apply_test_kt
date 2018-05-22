@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">applykt</string>
+    <string name="item_image_description">Success startup</string>
+    <string name="item_title">Geronimo !</string>
+    <string name="item_description">Success Startup</string>
+    <string name="item_share_bt">SHARE</string>
+    <string name="item_details_bt">DETAILS</string>
+    <string name="add_item_bt_name">plus</string>
+    <string name="remove_item_bt_name">minus</string>
+    <string name="share_text">Sharing</string>
+</resources>
